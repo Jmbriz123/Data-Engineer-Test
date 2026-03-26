@@ -43,6 +43,10 @@ using a set of defined business rules.
 
 ```
 springer-referral-pipeline/
+├── src/                           # Python source scripts
+│   ├── pipeline.py                # Main ETL script
+│   └── profiling_script.py        # Data profiling script
+│
 ├── data/                          # Source CSV files (mount or place here)
 │   ├── lead_log.csv
 │   ├── paid_transactions.csv
@@ -62,8 +66,6 @@ springer-referral-pipeline/
 ├── docs/
 │   └── data_dictionary.md         # Non-technical data dictionary
 │
-├── pipeline.py                    # Main ETL script
-├── profiling_script.py            # Data profiling script
 ├── requirements.txt               # Python dependencies
 ├── Dockerfile                     # Docker container definition
 ├── .dockerignore
@@ -98,10 +100,10 @@ pip install -r requirements.txt
 #    (already present if you cloned with sample data)
 
 # 5. Run data profiling
-python profiling_script.py
+python src/profiling_script.py
 
 # 6. Run the main pipeline
-python pipeline.py
+python src/pipeline.py
 ```
 
 Output files will be written to:
@@ -160,14 +162,14 @@ docker run --rm \
   -v "$(pwd)/data":/app/data:ro \
   -v "$(pwd)/profiling":/app/profiling \
   springer-referral-pipeline \
-  python profiling_script.py
+  python src/profiling_script.py
 
 # Pipeline only
 docker run --rm \
   -v "$(pwd)/data":/app/data:ro \
   -v "$(pwd)/output":/app/output \
   springer-referral-pipeline \
-  python pipeline.py
+  python src/pipeline.py
 ```
 
 ---
