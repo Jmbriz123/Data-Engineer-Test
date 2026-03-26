@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+.Python
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Pipeline outputs (generated at runtime — do not commit)
+output/
+profiling/*.csv
+profiling/*.xlsx
+
+# Secrets / credentials
+.env
+*.env
+credentials.json
