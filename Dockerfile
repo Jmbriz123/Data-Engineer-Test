@@ -22,8 +22,8 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy application source code
-COPY pipeline.py          .
-COPY profiling_script.py  .
+COPY src/pipeline.py         src/
+COPY src/profiling_script.py src/
 
 # Declare mount-point volumes so Docker Desktop shows them
 VOLUME ["/app/data", "/app/output", "/app/profiling"]
@@ -34,4 +34,4 @@ ENV OUTPUT_DIR=/app/output
 ENV PROFILING_DIR=/app/profiling
 
 # Default command: run profiling then pipeline
-CMD ["sh", "-c", "python profiling_script.py && python pipeline.py"]
+CMD ["sh", "-c", "python src/profiling_script.py && python src/pipeline.py"]
